@@ -42,7 +42,7 @@ func main() {
 				if len(group.Textcoords) > 0 {
 					i2 := i * 2
 					t = group.Textcoords[i2 : i2+2]
-					tf = filepathBase(group.Material.Texturefile)
+					_, tf = filepath.Split(group.Material.Texturefile)
 				} else {
 					t = []float32{0, 0}
 				}
@@ -53,13 +53,4 @@ func main() {
 			}
 		}
 	}
-}
-
-func filepathBase(f string) string {
-	fv := strings.Split(f, "/")
-	if len(fv) > 1 {
-		return fv[len(fv)-1]
-	}
-	fv = strings.Split(f, `\`)
-	return fv[len(fv)-1]
 }
