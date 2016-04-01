@@ -37,12 +37,15 @@ func main() {
 				v := group.Vertexes[i3 : i3+3]
 				n := group.Normals[i3 : i3+3]
 
+				_, tf := filepath.Split(group.Material.Texturefile)
+				if tf == "" {
+					tf = "ground.tga"
+				}
+
 				var t []float32
-				var tf = "ground.tga"
 				if len(group.Textcoords) > 0 {
 					i2 := i * 2
 					t = group.Textcoords[i2 : i2+2]
-					_, tf = filepath.Split(group.Material.Texturefile)
 				} else {
 					t = []float32{0, 0}
 				}
